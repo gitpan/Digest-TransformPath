@@ -1,0 +1,9 @@
+Revision history for Perl extension Digest::TransformPath
+
+0.02  Tue Sep 21 2004
+	- Changed name from Digest::PathKey to Digest::TransformPath
+	- Wrote actual module code
+	- Wrote full set of unit tests
+
+0.01  Mon Sep 20 2004
+	- Created the initial implementation
