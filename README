@@ -14,7 +14,7 @@ SYNOPSIS
   
       # Resize the image if bigger than 800x600
       Image::Munge->constrain( $Image, 800, 600 );
-      $Path->add('constrain 800x600');
+      $Path->add('constrain(800x600)');
   
       # Save the file
       my $filename = File::Spec->catfile( 'cropped', $Path->digest(15), $Image->type );
@@ -74,7 +74,7 @@ DESCRIPTION
     preferable.
 
 METHODS
-  new $id
+  new $id [, $string, ... ]
     The "new" constructor creates a new Digest::TransformPath object.
 
     Returns a new Digest::TransformPath object, or "undef" if not given a
@@ -93,10 +93,6 @@ METHODS
     The "digest" method generates an MD5 digest for the object. If passed
     the optional $chars integer value, it will trim the 32 byte digest (it
     uses hex) down to a shorter length.
-
-TO DO
-    Potentially add support for arbitrarily complex structs in the transform
-    descriptions, probably using Data::Dumper or something to serialise.
 
 SUPPORT
     All bugs should be filed via the bug tracker at

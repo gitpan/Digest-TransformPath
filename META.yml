@@ -1,5 +1,5 @@
 name: Digest-TransformPath
-version: 0.02
+version: 0.04
 abstract: Create digests describing multi-step data transformation paths
 author: Adam Kennedy<cpan@ali.as>
 license: perl

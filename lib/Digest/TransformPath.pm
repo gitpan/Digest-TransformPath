@@ -20,7 +20,7 @@ which this module is loosely (very) and conceptually (just barely) based.
   
   # Resize the image if bigger than 800x600
   Image::Munge->constrain( $Image, 800, 600 );
-  $Path->add('constrain 800x600');
+  $Path->add('constrain(800x600)');
   
   # Save the file
   my $filename = File::Spec->catfile( 'cropped', $Path->digest(15), $Image->type );
@@ -86,14 +86,14 @@ use Digest::MD5 ();
 
 use vars qw{$VERSION};
 BEGIN {
-	$VERSION = '0.02';
+	$VERSION = '0.04';
 }
 
 =pod
 
 =head1 METHODS
 
-=head2 new $id
+=head2 new $id [, $string, ... ]
 
 The C<new> constructor creates a new Digest::TransformPath object.
 
@@ -103,9 +103,18 @@ string for the identifier.
 =cut
 
 sub new {
-	my $class = ref $_[0] || $_[0];
-	my $id    = (defined $_[1] and ! ref $_[1]) ? $_[1] : return undef;
-	bless [ $id ], $class;
+	my $class = ref $_[0] ? ref shift : shift;
+	my $self = bless [ ], $class;
+
+	# Add the id
+	$self->add(shift) or return undef;
+
+	# Add any extra transforms
+	while ( @_ ) {
+		$self->add(shift) or return undef;
+	}
+
+	$self;
 }
 
 =pod
@@ -150,7 +159,7 @@ sub digest {
 	my $self   = shift;
 	my $joined = join "\n", @$self;
 	my $digest = Digest::MD5::md5_hex($joined);
-	my $chars = @_ ? shift : return $digest;
+	my $chars  = @_ ? shift : return $digest;
 	(defined $chars and ! ref $chars and $chars > 0 and $chars <= 32)
 		? substr( $digest, 0, $chars )
 		: undef;
@@ -159,11 +168,6 @@ sub digest {
 1;
 
 =pod
-
-=head1 TO DO
-
-Potentially add support for arbitrarily complex structs in the transform
-descriptions, probably using Data::Dumper or something to serialise.
 
 =head1 SUPPORT
 

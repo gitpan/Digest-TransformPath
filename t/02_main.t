@@ -20,7 +20,7 @@ BEGIN {
 
 
 # Does everything load?
-use Test::More 'tests' => 25;
+use Test::More 'tests' => 28;
 use Digest::TransformPath ();
 
 
@@ -76,11 +76,23 @@ is( $Foo->digest([]),    undef, 'Bad ->digest call returns undef' );
 is( $Foo->digest(0),     undef, 'Bad ->digest call returns undef' );
 is( $Foo->digest(33),    undef, 'Bad ->digest call returns undef' );
 
-is( $Foo->digest,     'ee12781a3ab0d1d1de99d0cb9a82fe21', '->digest returns correct digest' );
-is( $Foo->digest(1),  'e',                                '->digest(1) returns correctly' );
-is( $Foo->digest(2),  'ee',                               '->digest(2) returns correctly' );
-is( $Foo->digest(10), 'ee12781a3a',                       '->digest(10) returns correctly' );
-is( $Foo->digest(31), 'ee12781a3ab0d1d1de99d0cb9a82fe2',  '->digest(31) returns correctly' );
-is( $Foo->digest(32), 'ee12781a3ab0d1d1de99d0cb9a82fe21', '->digest(32) returns correctly' );
+is( $Foo->digest,     'ee12781a3ab0d1d1de99d0cb9a82fe21', '->digest     returns correct' );
+is( $Foo->digest(1),  'e',                                '->digest(1)  returns correct' );
+is( $Foo->digest(2),  'ee',                               '->digest(2)  returns correct' );
+is( $Foo->digest(10), 'ee12781a3a',                       '->digest(10) returns correct' );
+is( $Foo->digest(31), 'ee12781a3ab0d1d1de99d0cb9a82fe2',  '->digest(31) returns correct' );
+is( $Foo->digest(32), 'ee12781a3ab0d1d1de99d0cb9a82fe21', '->digest(32) returns correct' );
+
+
+
+
+
+#####################################################################
+# ->new and ->add in one step
+
+my $Foo2 = Digest::TransformPath->new( 'Foo', 'Bar', 'This and that' );
+isa_ok( $Foo2, 'Digest::TransformPath' );
+is_deeply( $Foo, $Foo2, '->new(id, transform) matches normal way' );
+is( $Foo->digest, $Foo2->digest, '->digest for both ways match' );
 
 1;
