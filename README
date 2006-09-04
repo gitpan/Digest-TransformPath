@@ -100,10 +100,14 @@ SUPPORT
     <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Digest%3A%3ATransformPat
     h>
 
-    For other issues, contact the author
+    For other issues, or commercial enhancement or support, contact the
+    author.
 
 AUTHORS
-    Adam Kennedy (Maintainer), <http://ali.as/>, cpan@ali.as
+    Adam Kennedy <cpan@ali.as>, <http://ali.as/>
+
+    Thank you to Phase N (<http://phase-n.com/>) for permitting the open
+    sourcing and release of this distribution.
 
 COPYRIGHT
     Copyright (c) 2004 Adam Kennedy. All rights reserved. This program is

@@ -80,13 +80,13 @@ In many uses of Digest::TransformPath, this is likely to be highly preferable.
 
 =cut
 
+use 5.005;
 use strict;
-use UNIVERSAL 'isa';
 use Digest::MD5 ();
 
 use vars qw{$VERSION};
 BEGIN {
-	$VERSION = '0.04';
+	$VERSION = '1.00';
 }
 
 =pod
@@ -175,11 +175,14 @@ All bugs should be filed via the bug tracker at
 
 L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Digest%3A%3ATransformPath>
 
-For other issues, contact the author
+For other issues, or commercial enhancement or support, contact the author.
 
 =head1 AUTHORS
 
-Adam Kennedy (Maintainer), L<http://ali.as/>, cpan@ali.as
+Adam Kennedy E<lt>cpan@ali.asE<gt>, L<http://ali.as/>
+
+Thank you to Phase N (L<http://phase-n.com/>) for permitting
+the open sourcing and release of this distribution.
 
 =head1 COPYRIGHT
 

@@ -1,16 +1,16 @@
-name: Digest-TransformPath
-version: 0.04
-abstract: Create digests describing multi-step data transformation paths
-author: Adam Kennedy<cpan@ali.as>
-license: perl
-distribution_type: module
-build_requires:
+abstract: Implements the TransformPath concept
+author: Adam Kennedy <cpan@ali.as>, L<http://ali.as/>
+build_requires: 
   Test::More: 0.47
-  File::Spec: 0.82
-requires:
-  perl: 5.005
-  Digest::MD5: 2.00
-no_index:
-  directory:
+distribution_type: module
+generated_by: Module::Install version 0.63
+license: perl
+name: Digest-TransformPath
+no_index: 
+  directory: 
     - inc
-generated_by: Module::Install version 0.35
+    - t
+requires: 
+  Digest::MD5: 2.00
+  perl: 5.005
+version: 1.00
